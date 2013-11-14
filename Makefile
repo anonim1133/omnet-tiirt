@@ -14,7 +14,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I.
+INCLUDE_PATH = -I. -Igenerator -Ipacket
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -27,12 +27,12 @@ PROJECT_OUTPUT_DIR = out
 PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
-# Object files for local .cc and .msg files
-OBJS = $O/Lab1.o $O/LabMsg_m.o
+# Object files for local .cpp and .msg files
+OBJS = $O/generator/SimpleGen.o $O/generator/Exponential.o $O/generator/Sink.o $O/generator/PoissonGen.o $O/packet/Packet_m.o
 
 # Message files
 MSGFILES = \
-    LabMsg.msg
+    packet/Packet.msg
 
 #------------------------------------------------------------------------------
 
@@ -88,16 +88,16 @@ $O/$(TARGET): $(OBJS)  $(wildcard $(EXTRA_OBJS)) Makefile
 
 .PHONY: all clean cleanall depend msgheaders
 
-.SUFFIXES: .cc
+.SUFFIXES: .cpp
 
-$O/%.o: %.cc $(COPTS_FILE)
+$O/%.o: %.cpp $(COPTS_FILE)
 	@$(MKPATH) $(dir $@)
 	$(qecho) "$<"
 	$(Q)$(CXX) -c $(COPTS) -o $@ $<
 
-%_m.cc %_m.h: %.msg
+%_m.cpp %_m.h: %.msg
 	$(qecho) MSGC: $<
-	$(Q)$(MSGC) -s _m.cc $(MSGCOPTS) $?
+	$(Q)$(MSGC) -s _m.cpp $(MSGCOPTS) $?
 
 msgheaders: $(MSGFILES:.msg=_m.h)
 
@@ -105,18 +105,30 @@ clean:
 	$(qecho) Cleaning...
 	$(Q)-rm -rf $O
 	$(Q)-rm -f omnet-tiirt omnet-tiirt.exe libomnet-tiirt.so libomnet-tiirt.a libomnet-tiirt.dll libomnet-tiirt.dylib
-	$(Q)-rm -f ./*_m.cc ./*_m.h
+	$(Q)-rm -f ./*_m.cpp ./*_m.h
+	$(Q)-rm -f generator/*_m.cpp generator/*_m.h
+	$(Q)-rm -f packet/*_m.cpp packet/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp generator/*.cpp packet/*.cpp
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/Lab1.o: Lab1.cc \
-	LabMsg_m.h
-$O/LabMsg_m.o: LabMsg_m.cc \
-	LabMsg_m.h
+$O/generator/Exponential.o: generator/Exponential.cpp \
+	generator/Exponential.h \
+	generator/SimpleGen.h \
+	packet/Packet_m.h
+$O/generator/PoissonGen.o: generator/PoissonGen.cpp \
+	generator/PoissonGen.h \
+	generator/SimpleGen.h \
+	packet/Packet_m.h
+$O/generator/SimpleGen.o: generator/SimpleGen.cpp \
+	generator/SimpleGen.h \
+	packet/Packet_m.h
+$O/generator/Sink.o: generator/Sink.cpp \
+	generator/Sink.h \
+	packet/Packet_m.h
 

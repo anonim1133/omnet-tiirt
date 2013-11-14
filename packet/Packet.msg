@@ -11,16 +11,15 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
-// 
-
 //
-// TODO generated message class
-//
-message LabMsg {
-    string dst;
-    string src;
-    int sessionId;
-    int packetId;
-    int priority = 0;
-    string payload;
+packet Packet {
+    int src;
+    int dst;
+    int sessionID;
+    int packetID;
+    int priority;
+    int hops;
+    int payload;
+    int ds;
+    double creationTime;
 }
