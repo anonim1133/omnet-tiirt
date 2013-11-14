@@ -1,3 +1,3 @@
-package omnet_tiirt;
+package lab1;
 
 @license(LGPL);
