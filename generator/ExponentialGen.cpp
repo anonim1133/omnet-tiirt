@@ -1,4 +1,4 @@
-#include "Exponential.h"
+#include "ExponentialGen.h"
 
 Define_Module(ExponentialGen);
 

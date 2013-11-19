@@ -14,7 +14,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I. -Igenerator -Ipacket
+INCLUDE_PATH = -I. -Igenerator -Ipacket -Iresults
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -28,7 +28,13 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cpp and .msg files
-OBJS = $O/generator/SimpleGen.o $O/generator/Exponential.o $O/generator/Sink.o $O/generator/PoissonGen.o $O/packet/Packet_m.o
+OBJS = \
+    $O/generator/ExponentialGen.o \
+    $O/generator/SimpleGen.o \
+    $O/generator/OnOffGen.o \
+    $O/generator/Sink.o \
+    $O/generator/PoissonGen.o \
+    $O/packet/Packet_m.o
 
 # Message files
 MSGFILES = \
@@ -108,17 +114,22 @@ clean:
 	$(Q)-rm -f ./*_m.cpp ./*_m.h
 	$(Q)-rm -f generator/*_m.cpp generator/*_m.h
 	$(Q)-rm -f packet/*_m.cpp packet/*_m.h
+	$(Q)-rm -f results/*_m.cpp results/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp generator/*.cpp packet/*.cpp
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp generator/*.cpp packet/*.cpp results/*.cpp
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/generator/Exponential.o: generator/Exponential.cpp \
-	generator/Exponential.h \
+$O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \
+	generator/ExponentialGen.h \
+	generator/SimpleGen.h \
+	packet/Packet_m.h
+$O/generator/OnOffGen.o: generator/OnOffGen.cpp \
+	generator/OnOffGen.h \
 	generator/SimpleGen.h \
 	packet/Packet_m.h
 $O/generator/PoissonGen.o: generator/PoissonGen.cpp \
