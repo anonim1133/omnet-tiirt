@@ -39,12 +39,32 @@ void SimpleGen::handleMessage(cMessage* msg)
 Packet* SimpleGen::generateMessage()
 {
 	char name[20];
+    int src = getId();
+    int dest = 31337;
+    int priority = intrand(5)+1;
+    int Payload = 1;
+    int ByteLength = intuniform(0,1000);
+    int ds = intrand(2);
 	packetId += 1;
+
 	// Generate simple message name
 	sprintf(name, "msg-%d", packetId);
-	Packet* msg = new Packet(name);
+
+	//Create new packet
+	Packet* packet= new Packet(name);
+
 	// Set properties
-	msg->setSessionID(sessionId);
-	msg->setPacketID(packetId);
-	return msg;
+	packet->setSessionID(sessionId);
+	packet->setPacketID(packetId);
+    packet->setSrc(src);
+    packet->setDst(dest);
+    packet->setSessionID(sessionId);
+    packet->setPacketID(packetId);
+    packet->setPriority(priority);
+    packet->setPayload(Payload);
+    packet->setByteLength(ByteLength);
+    packet->setDs(ds);
+    packet->setCreationTime(simTime().dbl());
+
+    return packet;
 }
