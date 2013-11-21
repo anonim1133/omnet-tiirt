@@ -20,24 +20,26 @@ void SimpleGen::initialize()
 	scheduleAt(1.0, event);
 }
 
-void SimpleGen::handleMessage(cMessage* msg)
-{
-	if (msg == event)
-	{
+void SimpleGen::handleMessage(cMessage* msg){
+	if (msg == event){
 		// It's time to send message, so prepare new one and send
-		send(generateMessage(), "out");
 		// Send next message after delay
-		scheduleAt(simTime()+getDelay(), event);
+		double delay = getDelay();
+
+		if(delay < 0){//to dla onOffa
+			scheduleAt(simTime()+5, event);
+		}else{
+			send(generateMessage(), "out");
+			scheduleAt(simTime()+delay, event);
+		}
 	}
-	else
-	{
+	else{
 		// This should never happen, but for sure delete
 		delete msg;
 	}
 }
 
-Packet* SimpleGen::generateMessage()
-{
+Packet* SimpleGen::generateMessage(){
 	char name[20];
     int src = getId();
     int dest = 31337;

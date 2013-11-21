@@ -14,6 +14,15 @@ simple ExponentialGen
         output out;
 }
 
+simple OnOffGen
+{
+    parameters:
+        double mean @unit("s") = default(1s);
+    gates:
+        output out;
+}
+
+
 simple Sink
 {
     gates:

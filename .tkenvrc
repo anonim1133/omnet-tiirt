@@ -1,5 +1,7 @@
 # Partial Tkenv config file -- see $HOME/.tkenvrc as well
+inspector "OnOff" "OnOff" "2" "958x511+960+18:normal"
 inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
 inspector "Exponential" "Exponential" "2" "638x1041+1280+18:normal"
-inspector "simulation.scheduled-events.msg-8" "Packet" "1" "316x1041+640+18:normal"
+inspector "simulation.scheduled-events.msg-8" "Packet" "1" "476x1041+640+18:normal"
+inspector "OnOffNetwork" "OnOffNetwork" "2" "638x1041+1280+18:normal"
 

@@ -5,29 +5,30 @@ Define_Module(OnOffGen);
 void OnOffGen::initialize()
 {
 	mean = par("mean");
-    lowerB = (int) par("lowerBound");
-    upperB = (int) par("upperBound");
-    threshold = par ("changeValue");
-    delay = par("delayTime");
+	t = time(NULL)+5;
+	state = true;
 	SimpleGen::initialize();
 }
 
 double OnOffGen::getDelay()
 {
-//bool stopped; 1 = return exponential delay, bez wysłania pakiety;
-//	0 - generowanie pakietu przez czas exponential(delay)
-    if (stopped == 0)
-    {
-        Packet *packet = generateMessage();
+	if(checkState()){
+		changeState();
+	}
 
-        send(packet, "out");
-
-        departureDelay.collect(delay);
-        wentOut++;
-    }
-
-	return exponential(delay);
+	if(state)
+		return exponential(mean);
+	else return float(-1);
 }
 
+bool OnOffGen::checkState(){
+	if(t <= time(NULL)){
+		return true;
+	}
+	return false;
+}
 
-
+void OnOffGen::changeState(){
+	if(state) state = false;
+	else state = true;
+}
