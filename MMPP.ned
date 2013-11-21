@@ -1,11 +1,11 @@
-network MMPP
+network MMPPNetwork
 {
     @display("bgb=276,124");
     submodules:
         sink: Sink {
             @display("p=223,56");
         }
-        gen: ExponentialGen {
+        gen: MMPPGen {
             @display("p=43,56");
         }
     connections:

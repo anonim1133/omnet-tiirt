@@ -22,6 +22,14 @@ simple OnOffGen
         output out;
 }
 
+simple MMPPGen
+{
+    parameters:
+		int mmppStates = default(6);
+		double mmppLambdaRange = default(3.0);
+    gates:
+        output out;
+}
 
 simple Sink
 {

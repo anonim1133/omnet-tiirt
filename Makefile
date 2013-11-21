@@ -30,6 +30,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cpp and .msg files
 OBJS = \
     $O/generator/ExponentialGen.o \
+    $O/generator/MMPPGen.o \
     $O/generator/SimpleGen.o \
     $O/generator/OnOffGen.o \
     $O/generator/Sink.o \
@@ -126,6 +127,10 @@ depend:
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \
 	generator/ExponentialGen.h \
+	generator/SimpleGen.h \
+	packet/Packet_m.h
+$O/generator/MMPPGen.o: generator/MMPPGen.cpp \
+	generator/MMPPGen.h \
 	generator/SimpleGen.h \
 	packet/Packet_m.h
 $O/generator/OnOffGen.o: generator/OnOffGen.cpp \
