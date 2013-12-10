@@ -36,7 +36,6 @@ void AdmissionControl::handleMessage(cMessage* msg)
 	packet_no++;
 
 	if(!msg->isSelfMessage()){
-	//EV<<"PRIORITY:"<<packet->getPriority();
 		if(this->check(packet)){
 			accepted += 1;;
 			queue.push_back(packet);
@@ -54,6 +53,6 @@ void AdmissionControl::handleMessage(cMessage* msg)
 }
 
 bool AdmissionControl::check(Packet* packet){
-	EV<<"ADMISSION CONTROL"<<std::endl;
+	EV<<"FIFO"<<std::endl;
 	return true;
 }
