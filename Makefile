@@ -30,6 +30,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cpp and .msg files
 OBJS = \
     $O/adminssioncontrol/RED.o \
+    $O/adminssioncontrol/wRED.o \
     $O/adminssioncontrol/AdmissionControl.o \
     $O/generator/ExponentialGen.o \
     $O/generator/MMPPGen.o \
@@ -134,6 +135,10 @@ $O/adminssioncontrol/AdmissionControl.o: adminssioncontrol/AdmissionControl.cpp 
 $O/adminssioncontrol/RED.o: adminssioncontrol/RED.cpp \
 	adminssioncontrol/AdmissionControl.h \
 	adminssioncontrol/RED.h \
+	packet/Packet_m.h
+$O/adminssioncontrol/wRED.o: adminssioncontrol/wRED.cpp \
+	adminssioncontrol/AdmissionControl.h \
+	adminssioncontrol/wRED.h \
 	packet/Packet_m.h
 $O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \
 	generator/ExponentialGen.h \

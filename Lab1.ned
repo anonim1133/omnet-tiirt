@@ -73,3 +73,10 @@ simple RED
         input in[];
         output out;
 }
+
+simple wRED
+{
+    gates:
+        input in[];
+        output out;
+}

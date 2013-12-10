@@ -33,7 +33,7 @@ class AdmissionControl: public cSimpleModule
 		unsigned int rejected;
 
 		void handleMessage(cMessage* msg);
-		virtual bool check();
+		virtual bool check(int priority);
 };
 
 #endif /* ADMISSIONCONTROL_H_ */

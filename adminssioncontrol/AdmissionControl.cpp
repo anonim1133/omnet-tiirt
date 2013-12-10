@@ -32,11 +32,13 @@ AdmissionControl::~AdmissionControl()
 
 void AdmissionControl::handleMessage(cMessage* msg)
 {
+	Packet* packet = check_and_cast<Packet*>(msg);
 	packet_no++;
+
 	if(!msg->isSelfMessage()){
-		if(this->check()){
-			accepted += 1;
-			Packet* packet = check_and_cast<Packet*>(msg);
+	//EV<<"PRIORITY:"<<packet->getPriority();
+		if(this->check(packet->getPriority())){
+			accepted += 1;;
 			queue.push_back(packet);
 			scheduleAt(simTime()+delay, packet);
 		}else{
@@ -51,6 +53,6 @@ void AdmissionControl::handleMessage(cMessage* msg)
 	EV<<"Qsize: "<<queue.size()<<" Dropped: "<<rejected<<"Accepted: "<<accepted<<std::endl;
 }
 
-bool AdmissionControl::check(){
+bool AdmissionControl::check(int priority){
 	return true;
 }

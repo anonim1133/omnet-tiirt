@@ -1,8 +1,7 @@
 # Partial Tkenv config file -- see $HOME/.tkenvrc as well
 inspector "RedNetwork" "RedNetwork" "2" "638x1041+1280+18:normal"
-inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
 inspector "Exponential" "Exponential" "2" "638x1041+1280+18:normal"
-inspector "Admission" "Admission" "2" "638x1041+1280+18:normal"
+inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
 inspector "MMPP" "MMPP" "2" "476x1041+1071+18:normal"
 inspector "OnOffNetwork" "OnOffNetwork" "2" "638x1041+1280+18:normal"
 inspector "OnOff" "OnOff" "2" "638x1041+1280+18:normal"

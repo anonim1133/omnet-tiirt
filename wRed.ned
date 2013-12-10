@@ -20,7 +20,7 @@ import ned.DelayChannel;
 //
 // TODO documentation
 //
-network wRedNetwork
+network RedNetwork
 {
     @display("bgb=606,504");
     submodules:
@@ -39,7 +39,7 @@ network wRedNetwork
         sink: Sink {
             @display("p=529,146");
         }
-        red: RED {
+        red: wRED {
             @display("p=292,146");
         }
         poissonGen1: PoissonGen {
