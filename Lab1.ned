@@ -80,3 +80,10 @@ simple wRED
         input in[];
         output out;
 }
+
+simple Blue
+{
+    gates:
+        input in[];
+        output out;
+}

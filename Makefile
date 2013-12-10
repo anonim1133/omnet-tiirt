@@ -29,6 +29,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cpp and .msg files
 OBJS = \
+    $O/adminssioncontrol/Blue.o \
     $O/adminssioncontrol/RED.o \
     $O/adminssioncontrol/wRED.o \
     $O/adminssioncontrol/AdmissionControl.o \
@@ -131,6 +132,10 @@ depend:
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/adminssioncontrol/AdmissionControl.o: adminssioncontrol/AdmissionControl.cpp \
 	adminssioncontrol/AdmissionControl.h \
+	packet/Packet_m.h
+$O/adminssioncontrol/Blue.o: adminssioncontrol/Blue.cpp \
+	adminssioncontrol/AdmissionControl.h \
+	adminssioncontrol/Blue.h \
 	packet/Packet_m.h
 $O/adminssioncontrol/RED.o: adminssioncontrol/RED.cpp \
 	adminssioncontrol/AdmissionControl.h \

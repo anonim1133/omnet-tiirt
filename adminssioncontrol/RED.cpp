@@ -18,7 +18,7 @@ RED::~RED(){
 	// TODO Auto-generated destructor stub
 }
 
-bool RED::check(){
+bool RED::check(int priority){
 	srand (time(NULL));
 	//unsigned r = rand() % max_queue_size;
 	//mean = (mean + queue.size());
@@ -29,7 +29,7 @@ bool RED::check(){
 	unsigned prob = r + queue.size();
 
 
-	EV<<"Qsize"<<queue.size()<<" MAX: "<<max_queue_size<<"PROB: "<<prob<<" R: "<<r<<std::endl;
+	EV<<"Red: Qsize"<<queue.size()<<" MAX: "<<max_queue_size<<"PROB: "<<prob<<" R: "<<r<<std::endl;
 
 	if(prob>max_queue_size)
 		return false;

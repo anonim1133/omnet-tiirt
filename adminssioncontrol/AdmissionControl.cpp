@@ -54,5 +54,6 @@ void AdmissionControl::handleMessage(cMessage* msg)
 }
 
 bool AdmissionControl::check(int priority){
+	EV<<"ADMISSION CONTROL"<<std::endl;
 	return true;
 }

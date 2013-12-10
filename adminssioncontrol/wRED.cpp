@@ -32,7 +32,7 @@ bool wRED::check(int priority){
 	else prob -= priority;
 
 
-	EV<<"Qsize"<<queue.size()<<" MAX: "<<max_queue_size<<" PRIORITY: "<<priority<<" PROB: "<<prob<<" R: "<<r<<std::endl;
+	EV<<"wRed: Qsize"<<queue.size()<<" MAX: "<<max_queue_size<<" PRIORITY: "<<priority<<" PROB: "<<prob<<" R: "<<r<<std::endl;
 
 	if(prob>max_queue_size)
 		return false;

@@ -20,7 +20,7 @@ import ned.DelayChannel;
 //
 // TODO documentation
 //
-network RedNetwork
+network wRedNetwork
 {
     @display("bgb=606,504");
     submodules:
