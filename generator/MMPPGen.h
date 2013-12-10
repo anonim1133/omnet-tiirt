@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <omnetpp.h>
+#include "SimpleGen.h"
 #include "Packet_m.h"
 
 using namespace std;

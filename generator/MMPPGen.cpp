@@ -1,7 +1,6 @@
 #include "MMPPGen.h"
 
-Define_Module(MMPPGen)
-;
+Define_Module(MMPPGen);
 
 MMPPGen::~MMPPGen()
 {
