@@ -18,7 +18,7 @@ RED::~RED(){
 	// TODO Auto-generated destructor stub
 }
 
-bool RED::check(int priority){
+bool RED::check(Packet* packet){
 	srand (time(NULL));
 	//unsigned r = rand() % max_queue_size;
 	//mean = (mean + queue.size());

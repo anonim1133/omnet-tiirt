@@ -18,8 +18,11 @@ wRED::~wRED(){
 	// TODO Auto-generated destructor stub
 }
 
-bool wRED::check(int priority){
+bool wRED::check(Packet* packet){
+
 	srand (time(NULL));
+	int priority = packet->getPriority();
+
 	//unsigned r = rand() % max_queue_size;
 	//mean = (mean + queue.size());
 	//EV<<mean<<":"<<queue.size()<<":"<<packet_no;

@@ -15,7 +15,7 @@ class Blue: public AdmissionControl{
 		unsigned max_queue_size;
 		unsigned last_queue_size;
 
-		bool check(int priority);
+		bool check(Packet* packet);
 };
 
 #endif /* Blue_H_ */

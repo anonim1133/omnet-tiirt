@@ -32,6 +32,7 @@ OBJS = \
     $O/adminssioncontrol/Blue.o \
     $O/adminssioncontrol/RED.o \
     $O/adminssioncontrol/wRED.o \
+    $O/adminssioncontrol/SourceBanlist.o \
     $O/adminssioncontrol/AdmissionControl.o \
     $O/generator/ExponentialGen.o \
     $O/generator/MMPPGen.o \
@@ -140,6 +141,10 @@ $O/adminssioncontrol/Blue.o: adminssioncontrol/Blue.cpp \
 $O/adminssioncontrol/RED.o: adminssioncontrol/RED.cpp \
 	adminssioncontrol/AdmissionControl.h \
 	adminssioncontrol/RED.h \
+	packet/Packet_m.h
+$O/adminssioncontrol/SourceBanlist.o: adminssioncontrol/SourceBanlist.cpp \
+	adminssioncontrol/AdmissionControl.h \
+	adminssioncontrol/SourceBanlist.h \
 	packet/Packet_m.h
 $O/adminssioncontrol/wRED.o: adminssioncontrol/wRED.cpp \
 	adminssioncontrol/AdmissionControl.h \

@@ -11,7 +11,7 @@ class RED: public AdmissionControl{
 		unsigned mean;
 		unsigned max_queue_size;
 
-		bool check(int priority);
+		bool check(Packet* packet);
 };
 
 #endif /* RED_H_ */

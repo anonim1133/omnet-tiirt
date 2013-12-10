@@ -22,7 +22,7 @@ Blue::~Blue(){
 	// TODO Auto-generated destructor stub
 }
 
-bool Blue::check(int priority){
+bool Blue::check(Packet* packet){
 	srand (time(NULL));
 	//Time to change value
 	if(simTime()-last_time > 0){
