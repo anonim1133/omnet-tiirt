@@ -14,18 +14,32 @@
 // 
 
 package lab1;
-
-
-network OnOff
+//
+// TODO documentation
+//
+network Admission
 {
-    @display("bgb=276,124");
+    @display("bgb=606,385");
     submodules:
+        exponentialGen: ExponentialGen {
+            @display("p=62,92");
+        }
+        mmppGen: MMPPGen {
+            @display("p=53,169");
+        }
+        onOffGen: OnOffGen {
+            @display("p=62,258");
+        }
+        poissonGen: PoissonGen {
+            @display("p=47,339");
+        }
         sink: Sink {
-            @display("p=223,56");
+            @display("p=448,202");
         }
-        gen: OnOffGen {
-            @display("p=43,56");
-        }
-    connections:
-        gen.out --> sink.in++;
+	connections:
+        exponentialGen.out --> sink.in++;
+        mmppGen.out --> sink.in++;
+        onOffGen.out --> sink.in++;
+        poissonGen.out --> sink.in++;
 }
+

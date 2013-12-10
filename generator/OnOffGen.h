@@ -1,3 +1,7 @@
+#ifndef __ONOFFGEN_H__
+#define __ONOFFGEN_H__
+
+
 #include <omnetpp.h>
 #include "SimpleGen.h"
 #include "Packet_m.h"
@@ -11,3 +15,5 @@ class OnOffGen : public MMPPGen
 	protected:
 		virtual bool canSendMessage();
 };
+
+#endif // __MMPPGEN_H__

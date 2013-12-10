@@ -57,5 +57,5 @@ simple OnOffGen extends MMPPGen
 simple Sink
 {
     gates:
-        input in;
+        input in[];
 }

@@ -27,5 +27,5 @@ network Poisson
             @display("p=43,56");
         }
     connections:
-        gen.out --> sink.in;
+        gen.out --> sink.in++;
 }

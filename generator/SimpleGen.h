@@ -1,3 +1,6 @@
+#ifndef __SIMPLEGEN_H__
+#define __SIMPLEGEN_H__
+
 #include <omnetpp.h>
 #include "Packet_m.h"
 
@@ -22,3 +25,5 @@ class SimpleGen : public cSimpleModule
 		cMessage* event;
 		simsignal_t eventSignal;
 };
+
+#endif // __ SIMPLEGEN _H__

@@ -1,8 +1,8 @@
 # Partial Tkenv config file -- see $HOME/.tkenvrc as well
-inspector "MMPPNetwork" "MMPPNetwork" "2" "478x1041+1440+18:normal"
-inspector "simulation.scheduled-events.msg-8" "Packet" "1" "476x1041+640+18:normal"
 inspector "Exponential" "Exponential" "2" "638x1041+1280+18:normal"
 inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
+inspector "MMPPNetwork" "MMPPNetwork" "2" "478x1041+1440+18:normal"
 inspector "OnOff" "OnOff" "2" "638x1041+1280+18:normal"
 inspector "OnOffNetwork" "OnOffNetwork" "2" "638x1041+1280+18:normal"
+inspector "MMPP" "MMPP" "2" "476x1041+1071+18:normal"
 
