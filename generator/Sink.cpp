@@ -1,7 +1,6 @@
 #include "Sink.h"
 
-Define_Module(Sink)
-;
+Define_Module(Sink);
 
 void Sink::handleMessage(cMessage* msg)
 {

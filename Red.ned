@@ -20,7 +20,7 @@ import ned.DelayChannel;
 //
 // TODO documentation
 //
-network Admission
+network RedNetwork
 {
     @display("bgb=606,504");
     submodules:
@@ -39,7 +39,7 @@ network Admission
         sink: Sink {
             @display("p=529,146");
         }
-        admissionControl: AdmissionControl {
+        red: RED {
             @display("p=292,146");
         }
         poissonGen1: PoissonGen {
@@ -55,14 +55,14 @@ network Admission
             @display("p=30,458");
         }
     connections:
-        admissionControl.out --> sink.in++;
-        exponentialGen.out --> admissionControl.in++;
-        mmppGen.out --> admissionControl.in++;
-        onOffGen.out --> admissionControl.in++;
-        poissonGen.out --> admissionControl.in++;
-        poissonGen1.out --> admissionControl.in++;
-        poissonGen2.out --> admissionControl.in++;
-        poissonGen3.out --> admissionControl.in++;
-        poissonGen4.out --> admissionControl.in++;
+        red.out --> sink.in++;
+        exponentialGen.out --> red.in++;
+        mmppGen.out --> red.in++;
+        onOffGen.out --> red.in++;
+        poissonGen.out --> red.in++;
+        poissonGen1.out --> red.in++;
+        poissonGen2.out --> red.in++;
+        poissonGen3.out --> red.in++;
+        poissonGen4.out --> red.in++;
 }
 

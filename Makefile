@@ -30,6 +30,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cpp and .msg files
 OBJS = \
     $O/adminssioncontrol/RED.o \
+    $O/adminssioncontrol/AdmissionControl.o \
     $O/generator/ExponentialGen.o \
     $O/generator/MMPPGen.o \
     $O/generator/SimpleGen.o \
@@ -127,8 +128,13 @@ depend:
 	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp adminssioncontrol/*.cpp generator/*.cpp packet/*.cpp results/*.cpp
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+$O/adminssioncontrol/AdmissionControl.o: adminssioncontrol/AdmissionControl.cpp \
+	adminssioncontrol/AdmissionControl.h \
+	packet/Packet_m.h
 $O/adminssioncontrol/RED.o: adminssioncontrol/RED.cpp \
-	adminssioncontrol/RED.h
+	adminssioncontrol/AdmissionControl.h \
+	adminssioncontrol/RED.h \
+	packet/Packet_m.h
 $O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \
 	generator/ExponentialGen.h \
 	generator/SimpleGen.h \

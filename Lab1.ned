@@ -59,3 +59,17 @@ simple Sink
     gates:
         input in[];
 }
+
+simple AdmissionControl
+{
+    gates:
+        input in[];
+        output out;
+}
+
+simple RED
+{
+    gates:
+        input in[];
+        output out;
+}
