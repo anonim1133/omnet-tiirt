@@ -1,6 +1,7 @@
 #include "PoissonGen.h"
 
-Define_Module(PoissonGen);
+Define_Module(PoissonGen)
+;
 
 void PoissonGen::initialize()
 {

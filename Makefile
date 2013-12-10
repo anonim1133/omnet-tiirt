@@ -131,9 +131,9 @@ $O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \
 	packet/Packet_m.h
 $O/generator/MMPPGen.o: generator/MMPPGen.cpp \
 	generator/MMPPGen.h \
-	generator/SimpleGen.h \
 	packet/Packet_m.h
 $O/generator/OnOffGen.o: generator/OnOffGen.cpp \
+	generator/MMPPGen.h \
 	generator/OnOffGen.h \
 	generator/SimpleGen.h \
 	packet/Packet_m.h

@@ -1,9 +1,10 @@
 #include "Sink.h"
 
-Define_Module(Sink);
+Define_Module(Sink)
+;
 
 void Sink::handleMessage(cMessage* msg)
 {
-	//Packet* msg = check_and_cast<Packet*>(msg);
+	LabMsg* labMsg = check_and_cast<LabMsg*>(msg);
 	delete msg;
 }

@@ -1,6 +1,7 @@
 #include "ExponentialGen.h"
 
-Define_Module(ExponentialGen);
+Define_Module(ExponentialGen)
+;
 
 void ExponentialGen::initialize()
 {
@@ -12,6 +13,4 @@ double ExponentialGen::getDelay()
 {
 	return exponential(mean);
 }
-
-
 
