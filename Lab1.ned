@@ -155,3 +155,10 @@ simple TokenBucket
         input in;
         output out;
 }
+
+simple HTokenBucket
+{
+    gates:
+        input in;
+        output out;
+}
