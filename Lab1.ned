@@ -76,13 +76,6 @@ simple AdmissionControl
 
 simple RED
 {
-	@class(RED);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accpeted](type="int");
-    @statistic[queue_size](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[queue_size](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
         output out;

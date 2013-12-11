@@ -39,7 +39,7 @@ network wRedNetwork
         sink: Sink {
             @display("p=529,146");
         }
-        red: wRED {
+        wred: wRED {
             @display("p=292,146");
         }
         poissonGen1: PoissonGen {
@@ -55,14 +55,14 @@ network wRedNetwork
             @display("p=30,458");
         }
     connections:
-        red.out --> sink.in++;
-        exponentialGen.out --> red.in++;
-        mmppGen.out --> red.in++;
-        onOffGen.out --> red.in++;
-        poissonGen.out --> red.in++;
-        poissonGen1.out --> red.in++;
-        poissonGen2.out --> red.in++;
-        poissonGen3.out --> red.in++;
-        poissonGen4.out --> red.in++;
+        wred.out --> sink.in++;
+        exponentialGen.out --> wred.in++;
+        mmppGen.out --> wred.in++;
+        onOffGen.out --> wred.in++;
+        poissonGen.out --> wred.in++;
+        poissonGen1.out --> wred.in++;
+        poissonGen2.out --> wred.in++;
+        poissonGen3.out --> wred.in++;
+        poissonGen4.out --> wred.in++;
 }
 
