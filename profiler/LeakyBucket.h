@@ -1,7 +1,9 @@
 #ifndef LeakyBucket_H_
 #define LeakyBucket_H_
 
-#include "AdmissionControl.h"
+#include <vector>
+#include <omnetpp.h>
+#include "Packet_m.h"
 
 class LeakyBucket: public cSimpleModule{
 	public:
