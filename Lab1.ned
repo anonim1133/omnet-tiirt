@@ -63,12 +63,12 @@ simple Sink
 simple AdmissionControl
 {
     @class(AdmissionControl);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats; interpolationmode=none);
+	@signal[queue_size](type="int");
+    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
     @signal[accpeted](type="int");
-    @statistic[queue_size](title="Accepted packages"; source="accepted"; record=vector,stats; interpolationmode=none);
+    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
     @signal[rejected](type="int");
-    @statistic[queue_size](title="Rejected Packages"; source="rejected"; record=vector,stats; interpolationmode=none);
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
         output out;
@@ -76,6 +76,13 @@ simple AdmissionControl
 
 simple RED
 {
+	@class(RED);
+    @signal[queue_size](type="int");
+    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
+    @signal[accpeted](type="int");
+    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    @signal[rejected](type="int");
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
         output out;
@@ -87,9 +94,9 @@ simple wRED
     @signal[queue_size](type="int");
     @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
     @signal[accpeted](type="int");
-    @statistic[queue_size](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
     @signal[rejected](type="int");
-    @statistic[queue_size](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
         output out;
@@ -98,12 +105,12 @@ simple wRED
 simple Blue
 {
     @class(Blue);
-    @signal[queue_size](type="int");
+	@signal[queue_size](type="int");
     @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
     @signal[accpeted](type="int");
-    @statistic[queue_size](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
     @signal[rejected](type="int");
-    @statistic[queue_size](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
         output out;
@@ -115,10 +122,29 @@ simple SourceBanlist
     @signal[queue_size](type="int");
     @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
     @signal[accpeted](type="int");
-    @statistic[queue_size](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
     @signal[rejected](type="int");
-    @statistic[queue_size](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
     gates:
         input in[];
+        output out;
+}
+
+simple LeakyBucket
+{
+	@class(LeakyBucket);
+    @signal[queue_size](type="int");
+    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
+    
+    @signal[queued](type="int");
+    @statistic[queued](title="Queued"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    
+    @signal[rejected](type="int");
+    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    
+    @signal[sent](type="int");
+    @statistic[sent](title="Sent Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    gates:
+        input in;
         output out;
 }

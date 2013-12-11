@@ -46,6 +46,7 @@ OBJS = \
     $O/generator/OnOffGen.o \
     $O/generator/Sink.o \
     $O/generator/PoissonGen.o \
+    $O/profiler/LeakyBucket.o \
     $O/packet/Packet_m.o
 
 # Message files
@@ -180,4 +181,8 @@ $O/generator/SimpleGen.o: generator/SimpleGen.cpp \
 $O/generator/Sink.o: generator/Sink.cpp \
 	generator/Sink.h \
 	packet/Packet_m.h
+$O/profiler/LeakyBucket.o: profiler/LeakyBucket.cpp \
+	adminssioncontrol/AdmissionControl.h \
+	packet/Packet_m.h \
+	profiler/LeakyBucket.h
 
