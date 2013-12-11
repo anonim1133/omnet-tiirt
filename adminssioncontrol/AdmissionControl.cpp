@@ -21,6 +21,7 @@ AdmissionControl::AdmissionControl()
 {
 	delay = 5.5;//par("delay");
 	rejected = 0;
+	queue_size = 0;
 	accepted = 0;
 	packet_no = 0;
 }
@@ -49,6 +50,8 @@ void AdmissionControl::handleMessage(cMessage* msg)
 			send(packet, "out");
 		EV <<queue.size()<<std::endl;
 	}
+
+	queue_size = queue.size();
 	EV<<"Qsize: "<<queue.size()<<" Dropped: "<<rejected<<"Accepted: "<<accepted<<std::endl;
 }
 

@@ -21,7 +21,7 @@ wRED::~wRED(){
 bool wRED::check(Packet* packet){
 
 	srand (time(NULL));
-	int priority = packet->getPriority();
+	unsigned priority = packet->getPriority();
 
 	//unsigned r = rand() % max_queue_size;
 	//mean = (mean + queue.size());

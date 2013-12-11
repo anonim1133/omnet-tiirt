@@ -27,6 +27,7 @@ class AdmissionControl: public cSimpleModule
 		virtual ~AdmissionControl();
 	protected:
 		std::vector<Packet*> queue;
+		int queue_size;
 		simtime_t delay;
 		unsigned long long packet_no;
 		unsigned int accepted;

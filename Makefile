@@ -14,7 +14,13 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I. -Iadminssioncontrol -Igenerator -Ipacket -Iresults
+INCLUDE_PATH = \
+    -I. \
+    -Iadminssioncontrol \
+    -Igenerator \
+    -Ipacket \
+    -Iprofiler \
+    -Iresults
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -121,6 +127,7 @@ clean:
 	$(Q)-rm -f adminssioncontrol/*_m.cpp adminssioncontrol/*_m.h
 	$(Q)-rm -f generator/*_m.cpp generator/*_m.h
 	$(Q)-rm -f packet/*_m.cpp packet/*_m.h
+	$(Q)-rm -f profiler/*_m.cpp profiler/*_m.h
 	$(Q)-rm -f results/*_m.cpp results/*_m.h
 
 cleanall: clean
@@ -128,7 +135,7 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp adminssioncontrol/*.cpp generator/*.cpp packet/*.cpp results/*.cpp
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp adminssioncontrol/*.cpp generator/*.cpp packet/*.cpp profiler/*.cpp results/*.cpp
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/adminssioncontrol/AdmissionControl.o: adminssioncontrol/AdmissionControl.cpp \
