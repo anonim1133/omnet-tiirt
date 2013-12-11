@@ -46,19 +46,3 @@ void LeakyBucket::activity(){
 		queue_size = queue.size();
 	}
 }
-
-/*
-void handleMessage(cMessage* msg)
-{
-	Packet* packet = check_and_cast<Packet*>(msg);
-
-	if(!msg->isSelfMessage()){
-			scheduleAt(simTime(), packet);//wyślij, po simTime można dodać delay
-	}else{//Przyjmij pakiet do kolejki
-			Packet* packet = queue.front();
-			queue.erase(queue.begin());
-			send(packet, "out");
-		EV <<queue.size()<<std::endl;
-	}
-}
-*/
