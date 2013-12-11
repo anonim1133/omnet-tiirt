@@ -148,3 +148,10 @@ simple LeakyBucket
         input in;
         output out;
 }
+
+simple TokenBucket
+{
+    gates:
+        input in;
+        output out;
+}

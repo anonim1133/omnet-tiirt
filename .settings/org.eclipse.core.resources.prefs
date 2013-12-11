@@ -4,3 +4,4 @@ encoding//adminssioncontrol/RED.cpp=UTF-8
 encoding//generator/MMPPGen.cpp=UTF-8
 encoding//generator/OnOffGen.cpp=UTF-8
 encoding//profiler/LeakyBucket.cpp=UTF-8
+encoding//profiler/TokenBucket.cpp=UTF-8
