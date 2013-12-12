@@ -162,3 +162,10 @@ simple HTokenBucket
         input in;
         output out;
 }
+
+simple FCFS
+{
+    gates:
+        input in;
+        output out;
+}

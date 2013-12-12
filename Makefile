@@ -16,6 +16,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 # C++ include paths (with -I)
 INCLUDE_PATH = \
     -I. \
+    -IScheduler \
     -Iadminssioncontrol \
     -Igenerator \
     -Ipacket \
@@ -35,6 +36,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cpp and .msg files
 OBJS = \
+    $O/Scheduler/FCFS.o \
     $O/adminssioncontrol/Blue.o \
     $O/adminssioncontrol/RED.o \
     $O/adminssioncontrol/wRED.o \
@@ -48,6 +50,7 @@ OBJS = \
     $O/generator/PoissonGen.o \
     $O/profiler/TokenBucket.o \
     $O/profiler/LeakyBucket.o \
+    $O/profiler/HTokenBucket.o \
     $O/packet/Packet_m.o
 
 # Message files
@@ -126,6 +129,7 @@ clean:
 	$(Q)-rm -rf $O
 	$(Q)-rm -f omnet-tiirt omnet-tiirt.exe libomnet-tiirt.so libomnet-tiirt.a libomnet-tiirt.dll libomnet-tiirt.dylib
 	$(Q)-rm -f ./*_m.cpp ./*_m.h
+	$(Q)-rm -f Scheduler/*_m.cpp Scheduler/*_m.h
 	$(Q)-rm -f adminssioncontrol/*_m.cpp adminssioncontrol/*_m.h
 	$(Q)-rm -f generator/*_m.cpp generator/*_m.h
 	$(Q)-rm -f packet/*_m.cpp packet/*_m.h
@@ -137,9 +141,12 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp adminssioncontrol/*.cpp generator/*.cpp packet/*.cpp profiler/*.cpp results/*.cpp
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cpp Scheduler/*.cpp adminssioncontrol/*.cpp generator/*.cpp packet/*.cpp profiler/*.cpp results/*.cpp
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+$O/Scheduler/FCFS.o: Scheduler/FCFS.cpp \
+	Scheduler/FCFS.h \
+	packet/Packet_m.h
 $O/adminssioncontrol/AdmissionControl.o: adminssioncontrol/AdmissionControl.cpp \
 	adminssioncontrol/AdmissionControl.h \
 	packet/Packet_m.h
@@ -182,6 +189,9 @@ $O/generator/SimpleGen.o: generator/SimpleGen.cpp \
 $O/generator/Sink.o: generator/Sink.cpp \
 	generator/Sink.h \
 	packet/Packet_m.h
+$O/profiler/HTokenBucket.o: profiler/HTokenBucket.cpp \
+	packet/Packet_m.h \
+	profiler/HTokenBucket.h
 $O/profiler/LeakyBucket.o: profiler/LeakyBucket.cpp \
 	packet/Packet_m.h \
 	profiler/LeakyBucket.h
