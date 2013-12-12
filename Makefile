@@ -36,6 +36,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cpp and .msg files
 OBJS = \
+    $O/Scheduler/RR.o \
     $O/Scheduler/FCFS.o \
     $O/Scheduler/SJF.o \
     $O/adminssioncontrol/Blue.o \
@@ -147,6 +148,10 @@ depend:
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/Scheduler/FCFS.o: Scheduler/FCFS.cpp \
 	Scheduler/FCFS.h \
+	packet/Packet_m.h
+$O/Scheduler/RR.o: Scheduler/RR.cpp \
+	Scheduler/FCFS.h \
+	Scheduler/RR.h \
 	packet/Packet_m.h
 $O/Scheduler/SJF.o: Scheduler/SJF.cpp \
 	Scheduler/FCFS.h \

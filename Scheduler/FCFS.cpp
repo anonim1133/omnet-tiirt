@@ -28,7 +28,6 @@ FCFS::~FCFS()
 
 void FCFS::activity(){
 	while(true){
-		EV<<"PENTLA ";
 		cMessage* msg = receive();
 		if(msg != NULL){
 			Packet* packet = check_and_cast<Packet*>(msg);

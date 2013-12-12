@@ -176,3 +176,10 @@ simple SJF
         input in;
         output out;
 }
+
+simple RR
+{
+    gates:
+        input in;
+        output out;
+}
