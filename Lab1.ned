@@ -183,3 +183,10 @@ simple RR
         input in;
         output out;
 }
+
+simple PriorityScheduler
+{
+    gates:
+        input in;
+        output out;
+}
