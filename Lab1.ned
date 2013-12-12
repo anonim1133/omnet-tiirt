@@ -74,18 +74,9 @@ simple AdmissionControl
         output out;
 }
 
-simple RED
+simple RED extends AdmissionControl
 {
 	@class(RED);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accpeted](type="int");
-    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
-    gates:
-        input in[];
-        output out;
 }
 
 simple wRED
