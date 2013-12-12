@@ -169,3 +169,10 @@ simple FCFS
         input in;
         output out;
 }
+
+simple SJF
+{
+    gates:
+        input in;
+        output out;
+}

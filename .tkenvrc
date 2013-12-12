@@ -1,4 +1,5 @@
 # Partial Tkenv config file -- see $HOME/.tkenvrc as well
+inspector "SJFNetwork" "SJFNetwork" "2" "636x1041+640+18:normal"
 inspector "TokenNetwork" "TokenNetwork" "2" "638x1041+1280+18:normal"
 inspector "Exponential" "Exponential" "2" "638x1041+1280+18:normal"
 inspector "Admission" "Admission" "2" "638x1041+1280+18:normal"
@@ -10,8 +11,8 @@ inspector "FCFS" "FCFS" "2" "638x1041+1280+18:normal"
 inspector "BlueNetwork" "BlueNetwork" "2" "638x1041+1280+18:normal"
 inspector "OnOffNetwork" "OnOffNetwork" "2" "638x1041+1280+18:normal"
 inspector "MMPP" "MMPP" "2" "476x1041+1071+18:normal"
-inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
 inspector "hTokenNetwork" "hTokenNetwork" "2" "638x1041+1280+18:normal"
-inspector "wRedNetwork" "wRedNetwork" "2" "638x1041+1280+18:normal"
+inspector "Poisson" "Poisson" "2" "638x1041+1280+18:normal"
 inspector "MMPPNetwork" "MMPPNetwork" "2" "478x1041+1440+18:normal"
+inspector "wRedNetwork" "wRedNetwork" "2" "638x1041+1280+18:normal"
 
