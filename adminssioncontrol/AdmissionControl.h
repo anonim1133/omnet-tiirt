@@ -33,8 +33,15 @@ class AdmissionControl: public cSimpleModule
 		unsigned int accepted;
 		unsigned int rejected;
 
-		void handleMessage(cMessage* msg);
+		virtual void initialize();
+
+		virtual void handleMessage(cMessage* msg);
 		virtual bool check(Packet* packet);
+
+	private:
+		simsignal_t signalQSize;
+		simsignal_t signalAccepted;
+		simsignal_t signalRejected;
 };
 
 #endif /* ADMISSIONCONTROL_H_ */

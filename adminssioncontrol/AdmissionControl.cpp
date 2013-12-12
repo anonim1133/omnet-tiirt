@@ -31,6 +31,13 @@ AdmissionControl::~AdmissionControl()
 	// TODO Auto-generated destructor stub
 }
 
+void AdmissionControl::initialize()
+{
+    signalQSize = registerSignal("qsize");
+    signalAccepted = registerSignal("accepted");
+    signalRejected = registerSignal("rejected");
+}
+
 void AdmissionControl::handleMessage(cMessage* msg)
 {
 	Packet* packet = check_and_cast<Packet*>(msg);
@@ -53,6 +60,10 @@ void AdmissionControl::handleMessage(cMessage* msg)
 
 	queue_size = queue.size();
 	EV<<"Qsize: "<<queue.size()<<" Dropped: "<<rejected<<"Accepted: "<<accepted<<std::endl;
+
+	emit(signalQSize, queue_size);
+    emit(signalAccepted, accepted);
+    emit(signalRejected, rejected);
 }
 
 bool AdmissionControl::check(Packet* packet){
