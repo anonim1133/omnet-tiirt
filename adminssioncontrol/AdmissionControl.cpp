@@ -19,8 +19,8 @@ Define_Module(AdmissionControl);
 
 AdmissionControl::AdmissionControl()
 {
-	delay = 5.5;//par("delay");
-	rejected = 0;
+	//delay = 5.5;
+ 	rejected = 0;
 	queue_size = 0;
 	accepted = 0;
 	packet_no = 0;
@@ -33,6 +33,7 @@ AdmissionControl::~AdmissionControl()
 
 void AdmissionControl::initialize()
 {
+    delay = par("delay");
     signalQSize = registerSignal("qsize");
     signalAccepted = registerSignal("accepted");
     signalRejected = registerSignal("rejected");
@@ -59,7 +60,7 @@ void AdmissionControl::handleMessage(cMessage* msg)
 	}
 
 	queue_size = queue.size();
-	EV<<"Qsize: "<<queue.size()<<" Dropped: "<<rejected<<"Accepted: "<<accepted<<std::endl;
+	EV<<"Qsize: "<<queue.size()<<" Dropped: "<<rejected<<" Accepted: "<<accepted<<std::endl;
 
 	emit(signalQSize, queue_size);
     emit(signalAccepted, accepted);

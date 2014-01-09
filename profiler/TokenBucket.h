@@ -3,30 +3,22 @@
 
 #include <vector>
 #include <omnetpp.h>
-#include "Packet_m.h"
+#include "LeakyBucket.h"
 
-class TokenBucket: public cSimpleModule{
+class TokenBucket: public LeakyBucket {
 	public:
 		TokenBucket();
 		virtual ~TokenBucket();
 	protected:
-		std::vector<Packet*> queue;
 		std::vector<bool> tokens;
-
-		simtime_t interval;
-		simtime_t last_sent;
-
-		unsigned rejected;
-		unsigned queued;
-		unsigned queue_size;
 		unsigned tokens_size;
-		unsigned sent;
-
 		unsigned max_ttl;
 		unsigned max_queue_size;
 		unsigned max_tokens_size;
-		//void handleMessage(cMessage* msg);
-		void activity();
+
+		virtual void initialize();
+		//virtual void handleMessage(cMessage* msg);
+		virtual void activity();
 };
 
 #endif /* TokenBucket_H_ */

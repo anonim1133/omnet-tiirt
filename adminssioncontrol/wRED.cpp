@@ -10,8 +10,8 @@
 Define_Module(wRED);
 
 wRED::wRED(){
-	mean = 1;
-	max_queue_size = 32;//par("max_queue_size");
+//	mean = 1;
+//	max_queue_size = 32;//par("max_queue_size");
 }
 
 wRED::~wRED(){

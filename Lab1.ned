@@ -62,13 +62,15 @@ simple Sink
 
 simple AdmissionControl
 {
-    @class(AdmissionControl);
-	@signal[qsize](type="int");
-    @statistic[qsize](title="Queue size"; source="qsize"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accepted](type="int");
-    @statistic[accepted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    parameters:
+    	@class(AdmissionControl);
+		@signal[qsize](type="int");
+    	@statistic[qsize](title="Queue size"; source="qsize"; record=vector,stats,histogram; interpolationmode=none);
+    	@signal[accepted](type="int");
+    	@statistic[accepted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    	@signal[rejected](type="int");
+    	@statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    	double delay = default(1.0);
     gates:
         input in[];
         output out;
@@ -76,32 +78,31 @@ simple AdmissionControl
 
 simple RED extends AdmissionControl
 {
-	@class(RED);
+    parameters:
+		@class(RED);
+		int mean = default(1);
+		int max_queue_size = default(16);
 }
 
-simple wRED
+simple wRED extends RED
 {
-    @class(wRED);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accpeted](type="int");
-    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
-    gates:
-        input in[];
-        output out;
+    parameters:
+        @class(wRED);
 }
 
 simple Blue
 {
-    @class(Blue);
-	@signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accpeted](type="int");
-    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    parameters:
+        @class(Blue);
+    	@signal[queue_size](type="int");
+        @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
+        @signal[accpeted](type="int");
+        @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+        @signal[rejected](type="int");
+        @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+        int max_queue_size = default(16);
+        double freeze_time = default(0.25);
+        double step = default(0.05);
     gates:
         input in[];
         output out;
@@ -123,35 +124,38 @@ simple SourceBanlist
 
 simple LeakyBucket
 {
-	@class(LeakyBucket);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    
-    @signal[queued](type="int");
-    @statistic[queued](title="Queued"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
-    
-    @signal[sent](type="int");
-    @statistic[sent](title="Sent Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+    parameters:
+    	@class(LeakyBucket);
+        @signal[queue_size](type="int");
+        @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
+        
+        @signal[queued](type="int");
+        @statistic[queued](title="Queued"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+        
+        @signal[rejected](type="int");
+        @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+        
+        @signal[sent](type="int");
+        @statistic[sent](title="Sent Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+        int max_queue_size = default(16);
+        double interval = default(0.5);
     gates:
         input in;
         output out;
 }
 
-simple TokenBucket
+simple TokenBucket extends LeakyBucket
 {
-    gates:
-        input in;
-        output out;
+    parameters:
+        @class(TokenBucket);
+		int max_tokens_size = default(24);
+		int max_ttl = default(4);
 }
 
-simple HTokenBucket
+simple HTokenBucket extends TokenBucket
 {
-    gates:
-        input in;
-        output out;
+    parameters:
+        @class(HTokenBucket);
 }
 
 simple FCFS

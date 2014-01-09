@@ -37,7 +37,7 @@ network RRNetwork
         sink: Sink {
             @display("p=463,397");
         }
-        blue: Blue {
+        blue: RED {
             @display("p=292,146");
         }
         poissonGen1: PoissonGen {

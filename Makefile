@@ -36,24 +36,24 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cpp and .msg files
 OBJS = \
+    $O/Scheduler/FCFS.o \
     $O/Scheduler/PiorityScheduler.o \
     $O/Scheduler/RR.o \
-    $O/Scheduler/FCFS.o \
     $O/Scheduler/SJF.o \
+    $O/adminssioncontrol/AdmissionControl.o \
     $O/adminssioncontrol/Blue.o \
     $O/adminssioncontrol/RED.o \
-    $O/adminssioncontrol/wRED.o \
     $O/adminssioncontrol/SourceBanlist.o \
-    $O/adminssioncontrol/AdmissionControl.o \
+    $O/adminssioncontrol/wRED.o \
     $O/generator/ExponentialGen.o \
     $O/generator/MMPPGen.o \
-    $O/generator/SimpleGen.o \
     $O/generator/OnOffGen.o \
-    $O/generator/Sink.o \
     $O/generator/PoissonGen.o \
-    $O/profiler/TokenBucket.o \
-    $O/profiler/LeakyBucket.o \
+    $O/generator/SimpleGen.o \
+    $O/generator/Sink.o \
     $O/profiler/HTokenBucket.o \
+    $O/profiler/LeakyBucket.o \
+    $O/profiler/TokenBucket.o \
     $O/packet/Packet_m.o
 
 # Message files
@@ -179,6 +179,7 @@ $O/adminssioncontrol/SourceBanlist.o: adminssioncontrol/SourceBanlist.cpp \
 	packet/Packet_m.h
 $O/adminssioncontrol/wRED.o: adminssioncontrol/wRED.cpp \
 	adminssioncontrol/AdmissionControl.h \
+	adminssioncontrol/RED.h \
 	adminssioncontrol/wRED.h \
 	packet/Packet_m.h
 $O/generator/ExponentialGen.o: generator/ExponentialGen.cpp \

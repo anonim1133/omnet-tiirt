@@ -10,12 +10,18 @@
 Define_Module(RED);
 
 RED::RED(){
-	mean = 1;
-	max_queue_size = 32;//par("max_queue_size");
+//	mean = 1;
+//	max_queue_size = 32;//par("max_queue_size");
 }
 
 RED::~RED(){
 	// TODO Auto-generated destructor stub
+}
+
+void RED::initialize() {
+    mean = par("mean");
+    max_queue_size = par("max_queue_size");
+    AdmissionControl::initialize();
 }
 
 bool RED::check(Packet* packet){

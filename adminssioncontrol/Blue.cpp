@@ -11,15 +11,21 @@ Define_Module(Blue);
 
 Blue::Blue(){
 	last_time = 0.0;
-	max_queue_size = 32;//par("max_queue_size");
+//	max_queue_size = 32;//par("max_queue_size");
 	last_queue_size = 0;
-	freezeTime = uniform(0,0.5);
-	step = 0.05;
+//	freezeTime = uniform(0,0.5);
+//	step = 0.05;
 	value = 0.0;
 }
 
 Blue::~Blue(){
 	// TODO Auto-generated destructor stub
+}
+
+void Blue::initialize() {
+    max_queue_size = par("max_queue_size");
+    freezeTime = par("freeze_time");
+    step = par("step");
 }
 
 bool Blue::check(Packet* packet){

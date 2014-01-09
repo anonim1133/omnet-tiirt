@@ -9,18 +9,7 @@
 
 Define_Module(HTokenBucket);
 
-HTokenBucket::HTokenBucket():cSimpleModule(1024){
-	max_queue_size = 32;
-	max_tokens_size = 32;
-	max_ttl = 5;
-	last_sent = 0.0;
-	interval= 0.1;
-	queue_size = 0;
-	tokens_size = 0;
-	rejected = 0;
-	queued = 0;
-	queued = 0;
-	sent = 0;
+HTokenBucket::HTokenBucket() {
 }
 
 HTokenBucket::~HTokenBucket(){

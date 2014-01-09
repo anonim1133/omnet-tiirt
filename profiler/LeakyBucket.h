@@ -5,7 +5,7 @@
 #include <omnetpp.h>
 #include "Packet_m.h"
 
-class LeakyBucket: public cSimpleModule{
+class LeakyBucket: public cSimpleModule {
 	public:
 		LeakyBucket();
 		virtual ~LeakyBucket();
@@ -17,11 +17,11 @@ class LeakyBucket: public cSimpleModule{
 		unsigned sent;
 		simtime_t interval;
 		simtime_t last_sent;
-
-
 		unsigned max_queue_size;
-		//void handleMessage(cMessage* msg);
-		void activity();
+
+		virtual void initialize();
+		//virtual void handleMessage(cMessage* msg);
+		virtual void activity();
 };
 
 #endif /* LeakyBucket_H_ */

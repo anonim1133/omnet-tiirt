@@ -15,6 +15,8 @@ class Blue: public AdmissionControl{
 		unsigned max_queue_size;
 		unsigned last_queue_size;
 
+		virtual void initialize();
+
 		bool check(Packet* packet);
 };
 

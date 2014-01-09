@@ -9,10 +9,10 @@
 
 Define_Module(LeakyBucket);
 
-LeakyBucket::LeakyBucket():cSimpleModule(1024){
-	max_queue_size = 32;//par("max_queue_size");
+LeakyBucket::LeakyBucket():cSimpleModule(1024) {
+//	max_queue_size = 32;//par("max_queue_size");
 	last_sent = 0.0;
-	interval= 0.1;
+//	interval= 0.1;
 	queue_size = 0;
 	rejected = 0;
 	queued = 0;
@@ -22,6 +22,11 @@ LeakyBucket::LeakyBucket():cSimpleModule(1024){
 
 LeakyBucket::~LeakyBucket(){
 	// TODO Auto-generated destructor stub
+}
+
+void LeakyBucket::initialize() {
+    max_queue_size = par("max_queue_size");
+    interval= par("interval");
 }
 
 void LeakyBucket::activity(){
