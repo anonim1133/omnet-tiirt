@@ -22,15 +22,15 @@ network RRNetwork
 {
     @display("bgb=606,504");
     submodules:
-        exponentialGen: ExponentialGen {
-            @display("p=31,29");
-        }
-        mmppGen: MMPPGen {
-            @display("p=31,107");
-        }
-        onOffGen: OnOffGen {
-            @display("p=31,174");
-        }
+//        exponentialGen: ExponentialGen {
+//            @display("p=31,29");
+//        }
+//        mmppGen: MMPPGen {
+//            @display("p=31,107");
+//        }
+//        onOffGen: OnOffGen {
+//            @display("p=31,174");
+//        }
         poissonGen: PoissonGen {
             @display("p=31,234");
         }
@@ -40,18 +40,18 @@ network RRNetwork
         blue: RED {
             @display("p=292,146");
         }
-        poissonGen1: PoissonGen {
-            @display("p=30,287");
-        }
-        poissonGen2: PoissonGen {
-            @display("p=30,342");
-        }
-        poissonGen3: PoissonGen {
-            @display("p=31,397");
-        }
-        poissonGen4: PoissonGen {
-            @display("p=30,458");
-        }
+//        poissonGen1: PoissonGen {
+//            @display("p=30,287");
+//        }
+//        poissonGen2: PoissonGen {
+//            @display("p=30,342");
+//        }
+//        poissonGen3: PoissonGen {
+//            @display("p=31,397");
+//        }
+//        poissonGen4: PoissonGen {
+//            @display("p=30,458");
+//        }
         leakyBucket: LeakyBucket {
             @display("p=463,146");
         }
@@ -59,14 +59,14 @@ network RRNetwork
             @display("p=463,287");
         }
     connections:
-        exponentialGen.out --> blue.in++;
-        mmppGen.out --> blue.in++;
-        onOffGen.out --> blue.in++;
+//        exponentialGen.out --> blue.in++;
+//        mmppGen.out --> blue.in++;
+//        onOffGen.out --> blue.in++;
         poissonGen.out --> blue.in++;
-        poissonGen1.out --> blue.in++;
-        poissonGen2.out --> blue.in++;
-        poissonGen3.out --> blue.in++;
-        poissonGen4.out --> blue.in++;
+//        poissonGen1.out --> blue.in++;
+//        poissonGen2.out --> blue.in++;
+//        poissonGen3.out --> blue.in++;
+//        poissonGen4.out --> blue.in++;
         blue.out --> leakyBucket.in;
         leakyBucket.out --> scheduler.in;
         scheduler.out --> sink.in++;

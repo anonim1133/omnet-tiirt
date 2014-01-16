@@ -56,6 +56,10 @@ simple OnOffGen extends MMPPGen
 
 simple Sink
 {
+    parameters:
+        @class(Sink);
+    	@signal[event](type="SimTime");
+    	@statistic[delay](title="Delay"; source="event"; record=vector,stats; interpolationmode=none);
     gates:
         input in[];
 }
@@ -99,18 +103,9 @@ simple Blue extends AdmissionControl
         double step = default(0.05);
 }
 
-simple SourceBanlist
+simple SourceBanlist extends AdmissionControl
 {
     @class(SourceBanlist);
-    @signal[queue_size](type="int");
-    @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[accpeted](type="int");
-    @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-    @signal[rejected](type="int");
-    @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
-    gates:
-        input in[];
-        output out;
 }
 
 simple LeakyBucket

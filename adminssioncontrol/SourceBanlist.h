@@ -11,7 +11,7 @@ class SourceBanlist: public AdmissionControl{
 	protected:
 		std::vector<int> ban_list;
 
-		bool check(Packet* packet);
+		virtual bool check(Packet* packet);
 };
 
 #endif /* SourceBanlist_H_ */
