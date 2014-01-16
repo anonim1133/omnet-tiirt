@@ -27,11 +27,14 @@ LeakyBucket::~LeakyBucket(){
 void LeakyBucket::initialize() {
     max_queue_size = par("max_queue_size");
     interval= par("interval");
+    signalQSize = registerSignal("qsize");
+    signalAccepted = registerSignal("accepted");
+    signalRejected = registerSignal("rejected");
 }
 
 void LeakyBucket::activity(){
 	while(true){
-		EV<<"LeakyQsize: "<<queue_size<<" simTime:"<< simTime() <<" last_sent:"<< last_sent <<std::endl;
+		EV<<"LeakyQsize: "<<queue_size<<" simTime: "<< simTime() <<" last_sent: "<< last_sent <<std::endl;
 		cMessage* msg = receive();
 		if(msg != NULL && (queue_size < max_queue_size)){
 			Packet* packet = check_and_cast<Packet*>(msg);
@@ -49,5 +52,9 @@ void LeakyBucket::activity(){
 		}
 
 		queue_size = queue.size();
+
+	    emit(signalQSize, queue_size);
+	    emit(signalAccepted, queued);
+	    emit(signalRejected, rejected);
 	}
 }

@@ -22,6 +22,11 @@ class LeakyBucket: public cSimpleModule {
 		virtual void initialize();
 		//virtual void handleMessage(cMessage* msg);
 		virtual void activity();
+
+	private:
+        simsignal_t signalQSize;
+        simsignal_t signalAccepted;
+        simsignal_t signalRejected;
 };
 
 #endif /* LeakyBucket_H_ */

@@ -112,17 +112,12 @@ simple LeakyBucket
 {
     parameters:
     	@class(LeakyBucket);
-        @signal[queue_size](type="int");
-        @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-        
-        @signal[queued](type="int");
-        @statistic[queued](title="Queued"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-        
-        @signal[rejected](type="int");
-        @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
-        
-        @signal[sent](type="int");
-        @statistic[sent](title="Sent Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
+		@signal[qsize](type="int");
+    	@statistic[qsize](title="Queue size"; source="qsize"; record=vector,stats,histogram; interpolationmode=none);
+    	@signal[accepted](type="int");
+    	@statistic[accepted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
+    	@signal[rejected](type="int");
+    	@statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
         int max_queue_size = default(16);
         double interval = default(0.5);
     gates:
