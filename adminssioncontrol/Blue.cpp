@@ -26,6 +26,7 @@ void Blue::initialize() {
     max_queue_size = par("max_queue_size");
     freezeTime = par("freeze_time");
     step = par("step");
+    AdmissionControl::initialize();
 }
 
 bool Blue::check(Packet* packet){

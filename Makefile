@@ -207,11 +207,14 @@ $O/generator/Sink.o: generator/Sink.cpp \
 	packet/Packet_m.h
 $O/profiler/HTokenBucket.o: profiler/HTokenBucket.cpp \
 	packet/Packet_m.h \
-	profiler/HTokenBucket.h
+	profiler/HTokenBucket.h \
+	profiler/LeakyBucket.h \
+	profiler/TokenBucket.h
 $O/profiler/LeakyBucket.o: profiler/LeakyBucket.cpp \
 	packet/Packet_m.h \
 	profiler/LeakyBucket.h
 $O/profiler/TokenBucket.o: profiler/TokenBucket.cpp \
 	packet/Packet_m.h \
+	profiler/LeakyBucket.h \
 	profiler/TokenBucket.h
 

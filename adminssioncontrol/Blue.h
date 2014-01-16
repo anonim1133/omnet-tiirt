@@ -17,7 +17,7 @@ class Blue: public AdmissionControl{
 
 		virtual void initialize();
 
-		bool check(Packet* packet);
+		virtual bool check(Packet* packet);
 };
 
 #endif /* Blue_H_ */

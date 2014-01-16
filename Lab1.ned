@@ -90,22 +90,13 @@ simple wRED extends RED
         @class(wRED);
 }
 
-simple Blue
+simple Blue extends AdmissionControl
 {
     parameters:
         @class(Blue);
-    	@signal[queue_size](type="int");
-        @statistic[queue_size](title="Queue size"; source="queue_size"; record=vector,stats,histogram; interpolationmode=none);
-        @signal[accpeted](type="int");
-        @statistic[accpeted](title="Accepted packages"; source="accepted"; record=vector,stats,histogram; interpolationmode=none);
-        @signal[rejected](type="int");
-        @statistic[rejected](title="Rejected Packages"; source="rejected"; record=vector,stats,histogram; interpolationmode=none);
         int max_queue_size = default(16);
         double freeze_time = default(0.25);
         double step = default(0.05);
-    gates:
-        input in[];
-        output out;
 }
 
 simple SourceBanlist
