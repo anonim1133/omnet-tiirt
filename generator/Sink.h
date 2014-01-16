@@ -14,6 +14,7 @@ class Sink : public cSimpleModule
         virtual void finish();
 		virtual void handleMessage(cMessage* msg);
 	private:
+		int packet_count;
 		simsignal_t eventSignal;
         PriorityStatsMap priorityStats;
 

@@ -12,6 +12,7 @@ Sink::~Sink()
 void Sink::initialize()
 {
     eventSignal = registerSignal("event");
+    packet_count = 0;
 }
 
 void Sink::finish()
@@ -34,6 +35,10 @@ void Sink::handleMessage(cMessage* msg)
 	EV << "Send time: " << delay << endl;
 	emit(eventSignal, delay);
 	stat->collect(delay);
+
+	packet_count++;
+
+
 
 	delete msg;
 }
